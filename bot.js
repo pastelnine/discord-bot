@@ -8,8 +8,10 @@ import { SelectMenuManager } from "./src/structures/managers/selectMenus.js";
 import { SlashManager } from "./src/structures/managers/slashCommands.js";
 import connectDB from "./src/database/connect.js";
 import JSONdb from "simple-json-db";
+import express from "express";
 import "dotenv/config.js"
 
+const app = express();
 const __dirname = dirname(import.meta.url);
 export const rootPath = __dirname;
 
@@ -52,3 +54,11 @@ export const rootPath = __dirname;
     await SlashManager(client, __dirname);
     await connectDB(process.env.MONGODB_URI);
 })();
+
+app.get("/", (req, res) => {
+    res.status(200).json({ success: true, status: "Online" }).end();
+});
+
+app.listen(3001, () => {
+    console.log('[WS]: Running.')
+});
