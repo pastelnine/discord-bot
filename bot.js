@@ -1,5 +1,4 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
-import { BOT_TOKEN } from "./src/config.js";
 import { dirname } from "node:path";
 import { ButtonManager } from "./src/structures/managers/buttonCommands.js";
 import { EventManager } from "./src/structures/managers/events.js";
@@ -9,6 +8,7 @@ import { SelectMenuManager } from "./src/structures/managers/selectMenus.js";
 import { SlashManager } from "./src/structures/managers/slashCommands.js";
 import connectDB from "./src/database/connect.js";
 import JSONdb from "simple-json-db";
+import "dotenv/config.js"
 
 const __dirname = dirname(import.meta.url);
 export const rootPath = __dirname;
@@ -48,7 +48,7 @@ export const rootPath = __dirname;
     await ButtonManager(client, __dirname);
     await SelectMenuManager(client, __dirname);
     await ModalManager(client, __dirname);
-    await client.login(BOT_TOKEN);
+    await client.login(process.env.TOKEN);
     await SlashManager(client, __dirname);
-    await connectDB();
+    await connectDB(process.env.MONGODB_URI);
 })();

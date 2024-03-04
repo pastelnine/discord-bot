@@ -1,11 +1,9 @@
 # Steps
 
-1. Add a `config.js` file with content:
-```js
-export const PREFIX = ["!"]; // your bot's message command prefix. example: !help
-export const BOT_TOKEN = "--- Your Bot's Tokeb";
-export const OWNER_IDS = ["Your USER ID", "Other bot owner user ID"];
-export const MONGODB_URI = "mongodb+srv:// --- Your MONGO DB Connection String";
+1. Add a `.env` file with content:
+```
+TOKEN="Required: Paste your bot token here."
+MONGODB_URI="Optional: Paste your MongoDB Connection string here."
 ```
 
 2. Install all required packages: `npm i`

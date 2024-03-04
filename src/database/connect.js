@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import { MONGODB_URI } from "../config.js";
 
-export default async function connectDB() {
+export default async function connectDB(MONGODB_URI) {
     const URI = MONGODB_URI;
     if (!URI) return console.log('[DB] No connection string.');
 
